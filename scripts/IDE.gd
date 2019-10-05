@@ -11,4 +11,5 @@ func _on_UndoButton_pressed():
 func _on_HideButton_pressed():
 	emit_signal("action_request", "hide")
 
-
+func _on_GettersPanel_getter_called(cmd):
+	add_child(cmd)
