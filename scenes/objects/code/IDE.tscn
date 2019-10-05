@@ -1,0 +1,99 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://scripts/IDE.gd" type="Script" id=1]
+[ext_resource path="res://art/buttons/run.png" type="Texture" id=2]
+[ext_resource path="res://art/buttons/undo.png" type="Texture" id=3]
+[ext_resource path="res://art/buttons/hide.png" type="Texture" id=4]
+[ext_resource path="res://art/get/move.png" type="Texture" id=5]
+[ext_resource path="res://scripts/CmdGetter.gd" type="Script" id=6]
+[ext_resource path="res://art/get/loop.png" type="Texture" id=7]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.137255, 0.160784, 0.2, 0.980392 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_color = Color( 0.0980392, 0.121569, 0.160784, 0.980392 )
+shadow_color = Color( 0.0784314, 0.0784314, 0.0980392, 0.509804 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.101961, 0.121569, 0.160784, 1 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.101961, 0.121569, 0.160784, 1 )
+border_width_top = 1
+border_color = Color( 0.101961, 0.121569, 0.160784, 1 )
+
+[node name="IDE" type="Panel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -140.0
+margin_top = -80.0
+margin_right = 140.0
+margin_bottom = 80.0
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -139.0
+margin_top = -55.0
+margin_right = 139.0
+margin_bottom = 48.0
+scroll_horizontal_enabled = false
+
+[node name="CodePanel" type="VBoxContainer" parent="ScrollContainer"]
+margin_right = 266.0
+margin_bottom = 103.0
+rect_min_size = Vector2( 266, 103 )
+
+[node name="ActionsPanel" type="Panel" parent="."]
+editor/display_folded = true
+margin_left = 1.0
+margin_top = 1.0
+margin_right = 279.0
+margin_bottom = 25.0
+custom_styles/panel = SubResource( 2 )
+
+[node name="RunButton" type="TouchScreenButton" parent="ActionsPanel"]
+scale = Vector2( 0.75, 0.75 )
+normal = ExtResource( 2 )
+
+[node name="UndoButton" type="TouchScreenButton" parent="ActionsPanel"]
+position = Vector2( 24, 0 )
+scale = Vector2( 0.75, 0.75 )
+normal = ExtResource( 3 )
+
+[node name="HideButton" type="TouchScreenButton" parent="ActionsPanel"]
+position = Vector2( 254, 0 )
+scale = Vector2( 0.75, 0.75 )
+normal = ExtResource( 4 )
+
+[node name="GettersPanel" type="Panel" parent="."]
+margin_top = 128.0
+margin_right = 280.0
+margin_bottom = 160.0
+custom_styles/panel = SubResource( 3 )
+
+[node name="MoveGetter" type="TouchScreenButton" parent="GettersPanel"]
+position = Vector2( 4, 4 )
+scale = Vector2( 0.75, 0.75 )
+normal = ExtResource( 5 )
+script = ExtResource( 6 )
+
+[node name="LoopGetter" type="TouchScreenButton" parent="GettersPanel"]
+position = Vector2( 32, 4 )
+scale = Vector2( 0.75, 0.75 )
+normal = ExtResource( 7 )
+script = ExtResource( 6 )
+[connection signal="pressed" from="ActionsPanel/RunButton" to="." method="_on_RunButton_pressed"]
+[connection signal="pressed" from="ActionsPanel/UndoButton" to="." method="_on_UndoButton_pressed"]
+[connection signal="pressed" from="ActionsPanel/HideButton" to="." method="_on_HideButton_pressed"]
