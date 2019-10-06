@@ -2,6 +2,7 @@ extends CanvasLayer
 
 var showing_ide = false
 
+# warning-ignore:unused_argument
 func _process(delta):
 	if Input.is_action_just_pressed("ui_select"):
 		if showing_ide:
