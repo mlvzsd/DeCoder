@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scripts/ControlPad.gd" type="Script" id=1]
+[ext_resource path="res://scenes/objects/Joystick.tscn" type="PackedScene" id=2]
+[ext_resource path="res://art/buttons/pause.png" type="Texture" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 136, 6 )
+
+[node name="Gamepad" type="Control"]
+margin_right = 288.0
+margin_bottom = 160.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Joystick" parent="." instance=ExtResource( 2 )]
+
+[node name="PauseButton" type="TouchScreenButton" parent="."]
+position = Vector2( 264, 0 )
+scale = Vector2( 0.75, 0.75 )
+normal = ExtResource( 3 )
+
+[node name="IDESpawnButton" type="TouchScreenButton" parent="."]
+position = Vector2( 144, 154 )
+shape = SubResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+[connection signal="pressed" from="PauseButton" to="." method="_on_PauseButton_pressed"]
+[connection signal="released" from="IDESpawnButton" to="." method="_on_IDESpawnButton_released"]

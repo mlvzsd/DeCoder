@@ -8,6 +8,7 @@ var ray_cast
 func _ready():
 	hide()
 
+# warning-ignore:unused_argument
 func _process(delta):
 	if to_walk == 0:
 		check_input()
