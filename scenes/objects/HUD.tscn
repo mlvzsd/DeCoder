@@ -100,4 +100,5 @@ margin_bottom = 240.0
 playback_speed = 2.0
 anims/hide_ide = SubResource( 1 )
 anims/show_ide = SubResource( 2 )
+
 [connection signal="action_request" from="IDE" to="." method="_on_IDE_action_request"]
