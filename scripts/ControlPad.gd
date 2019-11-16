@@ -1,7 +1,7 @@
 extends Control
 
 func _on_PauseButton_pressed():
-	pass # Thinking about..
+	get_tree().paused = not get_tree().paused
 
 func _on_IDESpawnButton_pressed():
 	var event = InputEventAction.new()
