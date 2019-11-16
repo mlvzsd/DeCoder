@@ -8,10 +8,12 @@ var ray_cast
 func _ready():
 	hide()
 
+# warning-ignore:unused_argument
 func _process(delta):
 	if to_walk == 0:
 		check_input()
-	
+
+func _on_WalkTimer_timeout():
 	if to_walk > 0:
 		to_walk -= 1
 		
@@ -22,6 +24,8 @@ func _process(delta):
 			position.y -= 1
 			$Camera2D.position.y += 1
 			$AnimatedSprite.frame = ($AnimatedSprite.frame + 1) % 4
+		
+		$WalkTimer.start()
 
 func start(pos, dir = "down"):
 	position = pos
@@ -75,3 +79,4 @@ func check_input():
 		can_walk = not ray_cast.is_colliding()
 		$Camera2D.position.y -= 1
 		$AnimatedSprite.frame += 1
+		$WalkTimer.start()

@@ -7,6 +7,7 @@ func _ready():
 	moving = true
 	by_left = true
 
+# warning-ignore:unused_argument
 func _process(delta):
 	if moving:
 		var new_pos = get_global_mouse_position()

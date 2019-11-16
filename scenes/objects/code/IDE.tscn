@@ -54,8 +54,8 @@ scroll_horizontal_enabled = false
 
 [node name="CodePanel" type="VBoxContainer" parent="ScrollContainer"]
 margin_right = 266.0
-margin_bottom = 103.0
-rect_min_size = Vector2( 266, 103 )
+margin_bottom = 100.0
+rect_min_size = Vector2( 266, 100 )
 
 [node name="ActionsPanel" type="Panel" parent="."]
 editor/display_folded = true

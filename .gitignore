@@ -1,2 +1,4 @@
-DeCoder.zip
-DeCoder.exe
+/build
+
+.import
+debug.keystore
