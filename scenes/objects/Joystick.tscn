@@ -43,5 +43,9 @@ texture = ExtResource( 2 )
 [node name="CurSprite" type="Sprite" parent="Directions"]
 position = Vector2( 0, -32 )
 texture = ExtResource( 3 )
+<<<<<<< HEAD
 [connection signal="pressed" from="SpawnButton" to="." method="_on_SpawnButton_pressed"]
 [connection signal="released" from="SpawnButton" to="." method="_on_SpawnButton_released"]
+=======
+[connection signal="pressed" from="SpawButton" to="." method="_on_SpawButton_pressed"]
+>>>>>>> 433bf2e19122380b805ee7ecd1bb28a14d5e4bff
