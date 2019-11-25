@@ -4,7 +4,7 @@
 
   Este projeto visa proporcionar noções básicas de programação para
 jovens entre 12 e 14 anos. Para isso, será criado exercicios lúdicos
-com os conceitos de *programação estruturada*: Estruturas de Repetição,
+com os conceitos de **programação estruturada**: Estruturas de Repetição,
 Estruturas de Seleção, e Funções.
 
 ## Compilação
