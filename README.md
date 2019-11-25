@@ -14,4 +14,4 @@ uma _build_ para Desktop com suport a controle.
   O jogo é desenvolvido no engine Godot, uma engine Open Source com 
 suporte a múltiplataforma. A _build_ de Android requer os [templates](https://godotengine.org/download)
 do Godot, e uma _key_ do Android.
-  O uso de uma _key_ para Android está descrito da [Documentação do Godot](https://docs.godotengine.org/en/stable/getting_started/workflow/export/exporting_for_android.html)
+  O uso de uma _key_ para Android é descrito na [Documentação do Godot](https://docs.godotengine.org/en/stable/getting_started/workflow/export/exporting_for_android.html)
