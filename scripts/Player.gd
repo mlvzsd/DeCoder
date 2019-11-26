@@ -27,11 +27,11 @@ func _on_WalkTimer_timeout():
 		
 		$WalkTimer.start()
 
-func start(pos, dir = "down"):
+func start(pos, way = "down"):
 	position = pos
-	$AnimatedSprite.animation = dir
+	$AnimatedSprite.animation = way
 	
-	match dir:
+	match way:
 		"up":
 			ray_cast = $RayCast2DUp
 		
