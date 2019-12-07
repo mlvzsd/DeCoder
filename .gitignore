@@ -2,3 +2,5 @@
 
 .import
 debug.keystore
+export_presets.cfg
+/.vscode

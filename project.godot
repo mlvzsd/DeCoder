@@ -33,7 +33,7 @@ window/size/width=288
 window/size/height=160
 window/size/fullscreen=true
 window/stretch/mode="viewport"
-window/stretch/aspect="keep_height"
+window/stretch/aspect="keep"
 
 [global]
 
@@ -80,9 +80,10 @@ pointing/emulate_touch_from_mouse=true
 
 [rendering]
 
-quality/driver/driver_name="GLES2"
 quality/intended_usage/framebuffer_allocation=0
 quality/intended_usage/framebuffer_allocation.mobile=0
+threads/thread_model=2
+quality/filters/anisotropic_filter_level=3
 vram_compression/import_etc=true
 vram_compression/import_etc2=false
 quality/reflections/high_quality_ggx=false

@@ -2,7 +2,7 @@ extends Control
 
 var event = InputEventAction.new()
 
-func turn_dir(action):
+func turn_way(action):
 	cancel_input()
 	
 	match action:
@@ -34,10 +34,10 @@ func _input(event):
 		
 		if result.length() > 16:
 			if abs(result.x) > abs(result.y):
-				turn_dir("ui_left" if result.x < 0 else "ui_right")
+				turn_way("ui_left" if result.x < 0 else "ui_right")
 			
 			else:
-				turn_dir("ui_up" if result.y < 0 else "ui_down")
+				turn_way("ui_up" if result.y < 0 else "ui_down")
 		
 		elif $Directions/CurSprite.visible:
 			$Directions/CurSprite.hide()
