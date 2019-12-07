@@ -10,12 +10,12 @@ const UP="up"
 const WIDTH=288
 const HEIGHT=160
 
-var code = "main:{right, right, right, down, down}"
+var code = "{right, right, down, down}"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	print(first_parse(code))
-	#exec(code)
+	exec(code)
 	
 #Execute the given program as string
 func exec(program):
