@@ -1,7 +1,9 @@
 extends Control
 
+signal game_paused
+
 func _on_PauseButton_pressed():
-	print("RUNNING..." if get_tree().paused else "PAUSED!") # Debuglog
+	emit_signal("game_paused")
 	get_tree().paused = not get_tree().paused
 
 func _on_IDESpawnButton_pressed():

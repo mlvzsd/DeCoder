@@ -7,15 +7,19 @@ func _process(delta):
 	if Input.is_action_just_pressed("ui_select"):
 		if showing_ide:
 			$AnimationPlayer.play("hide_ide")
-
+		
 		else:
 			$AnimationPlayer.play("show_ide")
-
+		
 		showing_ide = not showing_ide
+	
 	if Input.is_action_just_pressed("ui_cancel"):
 		if showing_ide:
 			$AnimationPlayer.play("hide_ide")
 			showing_ide = false
+	
+	if Input.is_action_just_pressed("ui_home"):
+		$PauseOptions.show()
 
 func _on_IDE_action_request(action):
 	match action:
@@ -26,3 +30,7 @@ func _on_IDE_action_request(action):
 		"hide":
 			$AnimationPlayer.play("hide_ide")
 			showing_ide = false
+
+func _on_Gamepad_game_paused():
+	$Gamepad.hide()
+	$PauseOptions.show()
