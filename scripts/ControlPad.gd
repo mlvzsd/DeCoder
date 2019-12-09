@@ -1,17 +1,18 @@
 extends Control
 
-signal game_paused
+var event = InputEventAction.new()
 
-func _on_PauseButton_pressed():
-	emit_signal("game_paused")
-	get_tree().paused = not get_tree().paused
-
-func _on_IDESpawnButton_pressed():
-	var event = InputEventAction.new()
-	event.action = "ui_select"
+func fake_just(action):
+	event.action = action
 	event.pressed = true
 	Input.parse_input_event(event)
 	
 	yield(get_tree().create_timer(1), "timeout")
 	event.pressed = false
 	Input.parse_input_event(event)
+
+func _on_PauseButton_pressed():
+	fake_just("ui_pause")
+
+func _on_IDESpawnButton_pressed():
+	fake_just("ui_select")
