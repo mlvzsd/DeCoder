@@ -1,23 +1,23 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scripts/Bloix.gd" type="Script" id=1]
-[ext_resource path="res://splash.png" type="Texture" id=2]
+[ext_resource path="res://art/bloix/box.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 16, 16 )
+extents = Vector2( 8, 8 )
 
 [node name="Bloix" type="Area2D"]
+position = Vector2( 8, 8 )
 gravity_vec = Vector2( 0, 0 )
 gravity = 0.0
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( -0.0478556, 0.169345 )
-scale = Vector2( 0.266454, 0.264306 )
 texture = ExtResource( 2 )
-__meta__ = {
-"_edit_group_": true
-}
+

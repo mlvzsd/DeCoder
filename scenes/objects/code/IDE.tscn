@@ -99,6 +99,7 @@ position = Vector2( 32, 4 )
 scale = Vector2( 0.75, 0.75 )
 normal = ExtResource( 9 )
 script = ExtResource( 7 )
+
 [connection signal="pressed" from="ActionsPanel/RunButton" to="." method="_on_RunButton_pressed"]
 [connection signal="pressed" from="ActionsPanel/UndoButton" to="." method="_on_UndoButton_pressed"]
 [connection signal="pressed" from="ActionsPanel/HideButton" to="." method="_on_HideButton_pressed"]

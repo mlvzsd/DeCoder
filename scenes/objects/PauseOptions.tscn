@@ -1,9 +1,10 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://scenes/objects/PauseOptions.gd" type="Script" id=1]
+[ext_resource path="res://scripts/PauseOptions.gd" type="Script" id=1]
 [ext_resource path="res://art/buttons/option.png" type="Texture" id=2]
 [ext_resource path="res://art/buttons/resume.png" type="Texture" id=3]
 [ext_resource path="res://art/buttons/quite.png" type="Texture" id=4]
+
 
 [node name="PauseOptions" type="Control"]
 pause_mode = 2
