@@ -1,6 +1,7 @@
 extends CanvasLayer
 
 var showing_ide = false
+var showing_pause = false
 
 # warning-ignore:unused_argument
 func _process(delta):
@@ -19,13 +20,14 @@ func _process(delta):
 			showing_ide = false
 	
 	if Input.is_action_just_pressed("ui_pause"):
-		if not get_tree().paused:
-			$PauseOptions.show()
+		if showing_pause:
+			$AnimationPlayer.play("hide_pause")
+			showing_pause = false
 		
 		else:
-			$PauseOptions.hide()
-		
-		get_tree().paused = not get_tree().paused
+			$AnimationPlayer.play("show_pause")
+			showing_pause = true
+			get_tree().paused = true
 
 func _on_IDE_action_request(action):
 	match action:

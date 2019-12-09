@@ -27,7 +27,5 @@ normal = ExtResource( 2 )
 position = Vector2( 32, 16 )
 texture = ExtResource( 4 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-
 [connection signal="pressed" from="ResumeButton" to="." method="_on_ResumeButton_pressed"]
 [connection signal="pressed" from="QuiteButton" to="." method="_on_QuiteButton_pressed"]
