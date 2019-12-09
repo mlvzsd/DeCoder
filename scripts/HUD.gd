@@ -20,7 +20,11 @@ func _process(delta):
 			showing_ide = false
 	
 	if Input.is_action_just_pressed("ui_pause"):
-		if showing_pause:
+		if showing_ide:
+			$AnimationPlayer.play("hide_ide")
+			showing_ide = false
+		
+		elif showing_pause:
 			$AnimationPlayer.play("hide_pause")
 			showing_pause = false
 		

@@ -44,7 +44,7 @@ tracks/2/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 resource_name = "hide_pause"
 length = 0.5
 tracks/0/type = "value"
@@ -84,7 +84,7 @@ tracks/2/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=3]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("IDE:rect_position")
@@ -184,8 +184,8 @@ visible = false
 pause_mode = 2
 playback_speed = 2.0
 anims/hide_ide = SubResource( 1 )
-anims/hide_pause = SubResource( 3 )
-anims/show_ide = SubResource( 2 )
+anims/hide_pause = SubResource( 2 )
+anims/show_ide = SubResource( 3 )
 anims/show_pause = SubResource( 4 )
 
 [connection signal="action_request" from="IDE" to="." method="_on_IDE_action_request"]
