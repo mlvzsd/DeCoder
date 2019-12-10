@@ -1,6 +1,5 @@
 extends Node2D
 
-
 const WIDTH=280
 const HEIGHT=160
 
@@ -33,6 +32,7 @@ func exec(program: String):
 	# call("turn_right")
 	for bin in parsed[0].split(","):
 		call(bin)
+		yield(get_tree().create_timer(.5), "timeout")
 
 #Go to right
 func right():
