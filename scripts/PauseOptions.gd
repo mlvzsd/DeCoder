@@ -1,5 +1,8 @@
 extends Control
 
+func _ready():
+	hide()
+
 var event = InputEventAction.new()
 
 func fake_just(action):
@@ -11,8 +14,9 @@ func fake_just(action):
 	event.pressed = false
 	Input.parse_input_event(event)
 
-func _on_PauseButton_pressed():
+func _on_ResumeButton_pressed():
+	get_tree().paused = false
 	fake_just("ui_pause")
 
-func _on_IDESpawnButton_pressed():
-	fake_just("ui_select")
+func _on_QuiteButton_pressed():
+	pass # Go main menu..

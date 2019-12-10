@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://scripts/IDE.gd" type="Script" id=1]
 [ext_resource path="res://art/buttons/run.png" type="Texture" id=2]
@@ -8,7 +8,10 @@
 [ext_resource path="res://art/get/move.png" type="Texture" id=6]
 [ext_resource path="res://scripts/CmdGetter.gd" type="Script" id=7]
 [ext_resource path="res://scenes/objects/code/cmds/MoveCmd.tscn" type="PackedScene" id=8]
-[ext_resource path="res://art/get/loop.png" type="Texture" id=9]
+[ext_resource path="res://art/get/turn.png" type="Texture" id=9]
+[ext_resource path="res://scenes/objects/code/cmds/TurnCmd.tscn" type="PackedScene" id=10]
+[ext_resource path="res://art/get/loop.png" type="Texture" id=11]
+[ext_resource path="res://scenes/objects/code/cmds/LoopCmd.tscn" type="PackedScene" id=12]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.137255, 0.160784, 0.2, 0.980392 )
@@ -80,7 +83,6 @@ scale = Vector2( 0.75, 0.75 )
 normal = ExtResource( 4 )
 
 [node name="GettersPanel" type="Panel" parent="."]
-editor/display_folded = true
 margin_top = 128.0
 margin_right = 280.0
 margin_bottom = 160.0
@@ -94,14 +96,24 @@ normal = ExtResource( 6 )
 script = ExtResource( 7 )
 Cmd = ExtResource( 8 )
 
-[node name="LoopGetter" type="TouchScreenButton" parent="GettersPanel"]
+[node name="TurnGetter" type="TouchScreenButton" parent="GettersPanel"]
 position = Vector2( 32, 4 )
 scale = Vector2( 0.75, 0.75 )
 normal = ExtResource( 9 )
 script = ExtResource( 7 )
+Cmd = ExtResource( 10 )
+
+[node name="LoopGetter" type="TouchScreenButton" parent="GettersPanel"]
+position = Vector2( 60, 4 )
+scale = Vector2( 0.75, 0.75 )
+normal = ExtResource( 11 )
+script = ExtResource( 7 )
+Cmd = ExtResource( 12 )
+
 [connection signal="pressed" from="ActionsPanel/RunButton" to="." method="_on_RunButton_pressed"]
 [connection signal="pressed" from="ActionsPanel/UndoButton" to="." method="_on_UndoButton_pressed"]
 [connection signal="pressed" from="ActionsPanel/HideButton" to="." method="_on_HideButton_pressed"]
 [connection signal="getter_called" from="GettersPanel" to="." method="_on_GettersPanel_getter_called"]
 [connection signal="pressed" from="GettersPanel/MoveGetter" to="GettersPanel" method="_on_MoveGetter_pressed"]
+[connection signal="pressed" from="GettersPanel/TurnGetter" to="GettersPanel" method="_on_TurnGetter_pressed"]
 [connection signal="pressed" from="GettersPanel/LoopGetter" to="GettersPanel" method="_on_LoopGetter_pressed"]

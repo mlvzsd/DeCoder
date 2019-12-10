@@ -2,7 +2,7 @@
 
 [ext_resource path="res://scripts/MoveCmd.gd" type="Script" id=1]
 [ext_resource path="res://art/cmds/move.png" type="Texture" id=2]
-[ext_resource path="res://art/cmds/icons/up.png" type="Texture" id=3]
+[ext_resource path="res://art/cmds/icons/move.png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 16, 16 )
@@ -16,12 +16,11 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="BodySprite" type="Sprite" parent="."]
 texture = ExtResource( 2 )
 
-[node name="DirectionButton" type="TouchScreenButton" parent="."]
-position = Vector2( -16, -16 )
-normal = ExtResource( 3 )
+[node name="IconSprite" type="Sprite" parent="."]
+texture = ExtResource( 3 )
 
 [node name="LeftDragButton" type="TouchScreenButton" parent="."]
 position = Vector2( -32, 0 )
@@ -30,6 +29,7 @@ shape = SubResource( 1 )
 [node name="RightDragButton" type="TouchScreenButton" parent="."]
 position = Vector2( 32, 0 )
 shape = SubResource( 2 )
+
 [connection signal="pressed" from="LeftDragButton" to="." method="_on_LeftDragButton_pressed"]
 [connection signal="released" from="LeftDragButton" to="." method="_on_DragButton_released"]
 [connection signal="pressed" from="RightDragButton" to="." method="_on_RightDragButton_pressed"]

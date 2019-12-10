@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Magic Table.png-89b210482b931fc99ddbf5b2b683ba39.stex"
+path="res://.import/resume.png-4fd42d5a278373b73b1a7cd6941df589.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/tiles/Magic Table.png"
-dest_files=[ "res://.import/Magic Table.png-89b210482b931fc99ddbf5b2b683ba39.stex" ]
+source_file="res://art/buttons/resume.png"
+dest_files=[ "res://.import/resume.png-4fd42d5a278373b73b1a7cd6941df589.stex" ]
 
 [params]
 

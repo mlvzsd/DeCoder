@@ -1,3 +1,57 @@
-[gd_scene format=2]
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://scripts/LoopCmd.gd" type="Script" id=1]
+[ext_resource path="res://art/cmds/loop.png" type="Texture" id=2]
+[ext_resource path="res://art/font/Silkscreen.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://art/cmds/loop-body.png" type="Texture" id=4]
+[ext_resource path="res://art/cmds/loop-foot.png" type="Texture" id=5]
+
+[sub_resource type="DynamicFont" id=3]
+size = 20
+font_data = ExtResource( 3 )
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 16, 8 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 16, 8 )
 
 [node name="LoopCmd" type="Node2D"]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="HeadSprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+
+[node name="ValueLabel" type="Label" parent="."]
+margin_left = -24.0
+margin_top = -16.0
+margin_right = 24.0
+margin_bottom = 16.0
+custom_fonts/font = SubResource( 3 )
+text = "2"
+align = 1
+valign = 1
+clip_text = true
+uppercase = true
+
+[node name="IncrementButton" type="TouchScreenButton" parent="."]
+position = Vector2( 0, -8 )
+shape = SubResource( 1 )
+
+[node name="DecrementButton" type="TouchScreenButton" parent="."]
+position = Vector2( 0, 8 )
+shape = SubResource( 2 )
+
+[node name="BodySprite" type="Sprite" parent="."]
+position = Vector2( -44, 32 )
+texture = ExtResource( 4 )
+
+[node name="FootSprite" type="Sprite" parent="."]
+position = Vector2( 0, 56 )
+texture = ExtResource( 5 )
+
+[connection signal="pressed" from="IncrementButton" to="." method="_on_IncrementButton_pressed"]
+[connection signal="pressed" from="DecrementButton" to="." method="_on_DecrementButton_pressed"]

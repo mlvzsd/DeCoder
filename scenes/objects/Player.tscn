@@ -62,4 +62,5 @@ cast_to = Vector2( -16, 0 )
 [node name="RayCast2DRight" type="RayCast2D" parent="."]
 enabled = true
 cast_to = Vector2( 16, 0 )
+
 [connection signal="timeout" from="WalkTimer" to="." method="_on_WalkTimer_timeout"]

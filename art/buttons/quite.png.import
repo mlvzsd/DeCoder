@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/left.png-68ab1a3bb9fe0d735b6c7ddeedd70525.stex"
+path="res://.import/quite.png-3dd762ed49c7c32d6ea16ab1006fbc09.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/cmds/icons/left.png"
-dest_files=[ "res://.import/left.png-68ab1a3bb9fe0d735b6c7ddeedd70525.stex" ]
+source_file="res://art/buttons/quite.png"
+dest_files=[ "res://.import/quite.png-3dd762ed49c7c32d6ea16ab1006fbc09.stex" ]
 
 [params]
 

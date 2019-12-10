@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scripts/HUD.gd" type="Script" id=1]
 [ext_resource path="res://scenes/objects/code/IDE.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/objects/Gamepad.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/objects/PauseOptions.tscn" type="PackedScene" id=4]
 
 [sub_resource type="Animation" id=1]
 length = 0.5
@@ -44,6 +45,46 @@ tracks/2/keys = {
 }
 
 [sub_resource type="Animation" id=2]
+resource_name = "hide_pause"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("PauseOptions:visible")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AmbientLight:color")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0.784314 ), Color( 0, 0, 0, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Gamepad:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=3]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("IDE:rect_position")
@@ -82,6 +123,46 @@ tracks/2/keys = {
 "values": [ false ]
 }
 
+[sub_resource type="Animation" id=4]
+resource_name = "show_pause"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("PauseOptions:visible")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AmbientLight:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 0.784314 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Gamepad:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource( 1 )
 
@@ -96,9 +177,15 @@ margin_bottom = 240.0
 
 [node name="Gamepad" parent="." instance=ExtResource( 3 )]
 
+[node name="PauseOptions" parent="." instance=ExtResource( 4 )]
+visible = false
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+pause_mode = 2
 playback_speed = 2.0
 anims/hide_ide = SubResource( 1 )
-anims/show_ide = SubResource( 2 )
+anims/hide_pause = SubResource( 2 )
+anims/show_ide = SubResource( 3 )
+anims/show_pause = SubResource( 4 )
 
 [connection signal="action_request" from="IDE" to="." method="_on_IDE_action_request"]

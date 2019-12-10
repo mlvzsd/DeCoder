@@ -8,5 +8,8 @@ func emit_call(called):
 func _on_MoveGetter_pressed():
 	emit_call($MoveGetter)
 
+func _on_TurnGetter_pressed():
+	emit_call($TurnGetter)
+
 func _on_LoopGetter_pressed():
 	emit_call($LoopGetter)

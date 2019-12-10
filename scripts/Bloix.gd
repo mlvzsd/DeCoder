@@ -22,7 +22,7 @@ class Command:
 		self.cmd = cmd
 		if args != null: self.args = args
 
-# Called when the node enters the scene tree for the first time.
+# Called when the node enters the scene tree for the first time
 func _ready():
 	print(first_parse(code))
 	exec(code)
@@ -42,7 +42,7 @@ func right():
 	
 	position.x = x if x < WIDTH else WIDTH #Don't exit the screen
 
-#Go to 16pixel left
+# Go to 16pixel left
 func left():
 	var x = position.x
 	
@@ -58,7 +58,7 @@ func down():
 	
 	position.y = y if y < HEIGHT else HEIGHT #Don't exit the screen
 
-#Go to 16pixel up
+# Go to 16pixel up
 func up():
 	var y = position.y
 	
@@ -127,28 +127,28 @@ func map_code(program: String, delimiter := ["{", "}"] ):
 # Return the blocks of code of given string or return 0
 func first_parse(program: String):
 	
-	#Remove all spaces from program
+	# Remove all spaces from program
 	program = program.split(" ").join("")
 	
-	#if string is empty, returns zero
+	# If string is empty, returns zero
 	if program.empty():
 		return 0
 	
 	var codes = [] # Storage blocks
-	var buffer = "" # buffer for block assembly
+	var buffer = "" # Buffer for block assembly
 		
 	for i in range(program.length()):
 		var c = program[i] # current char
 	
 		if c == "{": continue
 	
-		elif c == "}": # add the block to code list if reach its end 
+		elif c == "}": # Add the block to code list if reach its end 
 			codes.push_back(buffer)
 			buffer = ""
 			
 		else: buffer += c
 	
 	return codes
-## Called every frame. 'delta' is the elapsed time since the previous frame.
-##func _process(delta):
-##	pass
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
