@@ -14,7 +14,13 @@ enum DIR {
 var code = "{turn_left, ahead, ahead, turn_right, ahead, ahead, back}"
 var cur_dir = DIR.DOWN 
 
+class Command:
+	var cmd: String
+	var args
 
+	func _init(cmd, args = null):
+		self.cmd = cmd
+		if args != null: self.args = args
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -60,6 +66,9 @@ func up():
 	
 	position.y = y if y > 0 else 0 #Don't exit the screen
 
+#func for(code):
+#	pass
+
 # turn direction 90 degree to right
 func turn_right():
 	cur_dir = (cur_dir + 1 + 4) % 4
@@ -70,7 +79,7 @@ func turn_left():
 	print(cur_dir)
 # go in oposite of current direction
 func back():
-	go((2*cur_dir - 2) % 4)
+	go((cur_dir - 2 + 4) % 4)
 
 # go in current direction
 func ahead():
@@ -95,7 +104,7 @@ func go(dir):
 
 	pass
 #Map block code to each name
-func map_code(program):
+func map_code(program: String, delimiter := ["{", "}"] ):
 	var out_block = true
 	var key_buffer = ""
 	var value_buffer = ""
@@ -105,7 +114,7 @@ func map_code(program):
 		if out_block and c == ":":
 			out_block = false
 		
-		elif c == "}":
+		elif c == "}": 
 			out_block = true
 			value_buffer += c
 		if out_block:
@@ -116,7 +125,7 @@ func map_code(program):
 		
 	pass
 # Return the blocks of code of given string or return 0
-func first_parse(program):
+func first_parse(program: String):
 	
 	#Remove all spaces from program
 	program = program.split(" ").join("")
@@ -131,15 +140,13 @@ func first_parse(program):
 	for i in range(program.length()):
 		var c = program[i] # current char
 	
-		if c == "{": 
-			continue
+		if c == "{": continue
 	
 		elif c == "}": # add the block to code list if reach its end 
 			codes.push_back(buffer)
 			buffer = ""
 			
-		else:
-			buffer += c
+		else: buffer += c
 	
 	return codes
 ## Called every frame. 'delta' is the elapsed time since the previous frame.
