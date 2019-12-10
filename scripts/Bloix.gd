@@ -1,16 +1,20 @@
 extends Node2D
 
 
-
-const RIGHT="right"
-const LEFT="left"
-const DOWN="down"
-const UP="up"
-
-const WIDTH=288
+const WIDTH=280
 const HEIGHT=160
 
-var code = "{right, right, down, down}"
+enum DIR {
+	DOWN
+	LEFT
+	UP
+	RIGHT
+}
+
+var code = "{turn_left, ahead, ahead, turn_right, ahead, ahead, back}"
+var cur_dir = DIR.DOWN 
+
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -18,22 +22,12 @@ func _ready():
 	exec(code)
 	
 #Execute the given program as string
-func exec(program):
+func exec(program: String):
 	var parsed = first_parse(program)
-	
+	# call("turn_right")
 	for bin in parsed[0].split(","):
-		if bin == RIGHT:
-			right()
-		
-		if bin == LEFT:
-			left()
-			
-		if bin == UP:
-			up()
-			
-		if bin == DOWN:
-			down()
-	
+		call(bin)
+
 #Go to right
 func right():
 	var x = position.x
@@ -65,14 +59,48 @@ func up():
 	y -= 16
 	
 	position.y = y if y > 0 else 0 #Don't exit the screen
-	
+
+# turn direction 90 degree to right
+func turn_right():
+	cur_dir = (cur_dir + 1 + 4) % 4
+	print(cur_dir)
+# turn direction 90 degree to left
+func turn_left():
+	cur_dir = (cur_dir - 1 + 4) % 4
+	print(cur_dir)
+# go in oposite of current direction
+func back():
+	go((2*cur_dir - 2) % 4)
+
+# go in current direction
+func ahead():
+	go(cur_dir)
+
+func go(dir):
+	match dir:
+		DIR.UP:
+			up()
+			print("up")
+		DIR.DOWN:
+			down()
+			print("down")
+		DIR.LEFT:
+			left()
+			print("left")
+		DIR.RIGHT:
+			right()
+			print("right")
+		var err:
+			print(err, ": unspected value")
+
+	pass
 #Map block code to each name
 func map_code(program):
 	var out_block = true
 	var key_buffer = ""
 	var value_buffer = ""
 	var map
-	
+
 	for c in program.length():
 		if out_block and c == ":":
 			out_block = false

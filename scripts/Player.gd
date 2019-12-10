@@ -43,7 +43,8 @@ func start(pos, way = "down"):
 		
 		"right":
 			ray_cast = $RayCast2DRight
-	
+		var no_way:
+			print(no_way + " is not a valid way")
 	can_walk = not ray_cast.is_colliding()
 	
 	show()
