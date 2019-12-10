@@ -6,6 +6,7 @@ var by_left
 func _ready():
 	moving = true
 	by_left = true
+	$LeftDragButton.passby_press = true
 
 # warning-ignore:unused_argument
 func _process(delta):
@@ -18,6 +19,7 @@ func _process(delta):
 func _on_LeftDragButton_pressed():
 	moving = true
 	by_left = true
+	$LeftDragButton.passby_press = false
 
 func _on_RightDragButton_pressed():
 	moving = true
