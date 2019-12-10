@@ -19,11 +19,14 @@ func _process(delta):
 func _on_LeftDragButton_pressed():
 	moving = true
 	by_left = true
+	z_index = 1
 	$LeftDragButton.passby_press = false
 
 func _on_RightDragButton_pressed():
 	moving = true
 	by_left = false
+	z_index = 1
 
 func _on_DragButton_released():
 	moving = false
+	z_index = 0
