@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scripts/TurnCmd.gd" type="Script" id=1]
+[ext_resource path="res://art/cmds/turn.png" type="Texture" id=2]
+[ext_resource path="res://art/cmds/icons/turn.png" type="Texture" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 16, 16 )
+
+[node name="TurnCmd" type="Node2D"]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="BodySprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+
+[node name="RotationSprite" type="Sprite" parent="."]
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 32, 32 )
+
+[node name="TurnButton" type="TouchScreenButton" parent="."]
+shape = SubResource( 1 )
+
+[connection signal="pressed" from="TurnButton" to="." method="_on_TurnButton_pressed"]
