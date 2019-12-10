@@ -1,10 +1,16 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scripts/TurnCmd.gd" type="Script" id=1]
 [ext_resource path="res://art/cmds/turn.png" type="Texture" id=2]
 [ext_resource path="res://art/cmds/icons/turn.png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 16, 16 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 16, 16 )
+
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 16, 16 )
 
 [node name="TurnCmd" type="Node2D"]
@@ -24,4 +30,16 @@ region_rect = Rect2( 0, 0, 32, 32 )
 [node name="TurnButton" type="TouchScreenButton" parent="."]
 shape = SubResource( 1 )
 
+[node name="LeftDragButton" type="TouchScreenButton" parent="."]
+position = Vector2( -32, 0 )
+shape = SubResource( 2 )
+
+[node name="RightDragButton" type="TouchScreenButton" parent="."]
+position = Vector2( 32, 0 )
+shape = SubResource( 3 )
+
 [connection signal="pressed" from="TurnButton" to="." method="_on_TurnButton_pressed"]
+[connection signal="pressed" from="LeftDragButton" to="." method="_on_LeftDragButton_pressed"]
+[connection signal="released" from="LeftDragButton" to="." method="_on_DragButton_released"]
+[connection signal="pressed" from="RightDragButton" to="." method="_on_RightDragButton_pressed"]
+[connection signal="released" from="RightDragButton" to="." method="_on_DragButton_released"]

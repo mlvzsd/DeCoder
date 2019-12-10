@@ -32,7 +32,6 @@ config/quit_on_go_back=false
 
 window/size/width=288
 window/size/height=160
-window/size/fullscreen=true
 window/stretch/mode="viewport"
 window/stretch/aspect="keep"
 
