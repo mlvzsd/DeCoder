@@ -1,6 +1,9 @@
 /build
+/test
+.directory
 
 .import
 debug.keystore
 export_presets.cfg
 /.vscode
+export_presets.cfg
