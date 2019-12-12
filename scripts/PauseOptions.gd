@@ -19,4 +19,5 @@ func _on_ResumeButton_pressed():
 	fake_just("ui_pause")
 
 func _on_QuiteButton_pressed():
+	get_tree().quit()
 	pass # Go main menu..

@@ -27,6 +27,5 @@ normal = ExtResource( 2 )
 [node name="Sprite" type="Sprite" parent="QuiteButton"]
 position = Vector2( 32, 16 )
 texture = ExtResource( 4 )
-
 [connection signal="pressed" from="ResumeButton" to="." method="_on_ResumeButton_pressed"]
 [connection signal="pressed" from="QuiteButton" to="." method="_on_QuiteButton_pressed"]
