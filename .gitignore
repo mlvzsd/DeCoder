@@ -3,7 +3,7 @@
 
 .directory
 
-.import
+.import/
 debug.keystore
 export_presets.cfg
 /.vscode
