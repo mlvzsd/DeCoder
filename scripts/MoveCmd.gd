@@ -1,32 +1,24 @@
 extends Node2D
 
-var moving
-var by_left
+var ide
+var height = 32
 
-func _ready():
-	moving = true
-	by_left = true
-	$LeftDragButton.passby_press = true
+func _on_TurnButton_pressed():
+	if $DirectionSprite.region_rect.position.x == 0:
+		$DirectionSprite.region_rect.position.x = 32
+	
+	else:
+		$DirectionSprite.region_rect.position.x = 0
 
-# warning-ignore:unused_argument
-func _process(delta):
-	if moving:
-		var new_pos = get_global_mouse_position()
-		new_pos.x += 32 if by_left else -32
-		
-		position = new_pos
+func get_inst():
+	if $DirectionSprite.region_rect.position.x == 0:
+		return "ahead"
+	
+	else:
+		return "back"
 
-func _on_LeftDragButton_pressed():
-	moving = true
-	by_left = true
-	z_index = 1
-	$LeftDragButton.passby_press = false
+func focus(value):
+	$FocusSprite.visible = value
 
-func _on_RightDragButton_pressed():
-	moving = true
-	by_left = false
-	z_index = 1
-
-func _on_DragButton_released():
-	moving = false
-	z_index = 0
+func _on_FocusButton_pressed():
+	ide.focus(self)

@@ -3,6 +3,7 @@ extends 'res://scripts/bloix/Bloix.gd'
 const WIDTH=280
 const HEIGHT=160
 
+const SIZE=16
 
 enum DIR {
 	DOWN
@@ -11,46 +12,52 @@ enum DIR {
 	RIGHT
 }
 
-var cur_dir = DIR.DOWN 
-
-var code = """
-	main:[ gentoo ] gentoo:[ ahead , ahead ]
-"""
+var default_position
+var code = "main:{ giradinha } giradinha:{ vira, vira, vira, } vira:{ ahead, ahead, turn_left}"
+var cur_dir : int = DIR.DOWN 
 
 func _ready():
-	exec(code)
+	default_position = transform.get_origin()
+
+func reset():
+	cur_dir = DIR.DOWN
+	position = default_position
+	
+func start(pos):
+	position = pos
+	default_position = pos
 
 #Go to right
 func right():
 	var x = position.x
 	
-	x += 16
+	x += SIZE
 	
-	position.x = x if x < WIDTH else WIDTH #Don't exit the screen
+	position.x = x
 
 # Go to 16pixel left
 func left():
 	var x = position.x
 	
-	x -= 16
+	x -= SIZE
 	
-	position.x = x if x > 0 else 0 #Don't exit the screen
+	position.x = x
 
 #Go to 16pixel down
 func down():
 	var y = position.y
 	
-	y += 16
+	y += SIZE
 	
-	position.y = y if y < HEIGHT else HEIGHT #Don't exit the screen
+	position.y = y
 
 # Go to 16pixel up
 func up():
 	var y = position.y
 	
-	y -= 16
+	y -= SIZE
 	
-	position.y = y if y > 0 else 0 #Don't exit the screen
+	position.y = y
 
 #func for(code):
 #	pass
@@ -58,11 +65,15 @@ func up():
 # turn direction 90 degree to right
 func turn_right(a):
 	cur_dir = (cur_dir + 1 + 4) % 4
+	#$Sprite.rotation_degrees -= 90
 	print(cur_dir)
+
 # turn direction 90 degree to left
 func turn_left(a):
 	cur_dir = (cur_dir - 1 + 4) % 4
+	#$Sprite.rotation_degrees += 90
 	print(cur_dir)
+	
 # go in oposite of current direction
 func back(a):
 	go((cur_dir - 2 + 4) % 4)
@@ -87,5 +98,3 @@ func go(dir):
 			print("right")
 		var err:
 			print(err, ": unspected value")
-	
-	

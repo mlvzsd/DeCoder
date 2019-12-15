@@ -1,5 +1,8 @@
 extends CanvasLayer
 
+signal runned
+signal undone
+
 var showing_ide = false
 var showing_pause = false
 
@@ -33,12 +36,16 @@ func _process(delta):
 			showing_pause = true
 			get_tree().paused = true
 
-func _on_IDE_action_request(action):
+func _on_IDE_action_request(action, arg=null):
 	match action:
 		"run":
-			pass
+			$AnimationPlayer.play("hide_ide")
+			showing_ide = false
+			emit_signal("runned", $IDE.create_script()) # Send the code.
 		"undo":
-			pass
+			$AnimationPlayer.play("hide_ide")
+			showing_ide = false
+			emit_signal("undone")
 		"hide":
 			$AnimationPlayer.play("hide_ide")
 			showing_ide = false

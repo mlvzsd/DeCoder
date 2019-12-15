@@ -1,9 +1,6 @@
 class_name Parser
 
-
-
 const blank_chars = ['\n', '\t', ' ']
-
 
 class Command:
 	var cmd: String
@@ -13,17 +10,16 @@ class Command:
 		self.cmd = cmd 
 		if args != null: self.args = args
 
-
-static func parse(program: String, delimiter := [ '[', ']' ], separator := ',') -> Dictionary:
+static func parse(program: String, delimiter := [ '{', '}' ], separator := ',') -> Dictionary:
 	var map = parse_map(program, delimiter)
 	
 	var res = {}
 	
 	for key in map.keys():
 		var command := []
-
+	
 		var aux = arrayer(map[key], separator)
-
+	
 		for cmd in aux:
 			command.append(to_command(cmd))
 		
@@ -34,9 +30,9 @@ static func parse(program: String, delimiter := [ '[', ']' ], separator := ',') 
 static func parse_map(program: String, delimiter: PoolStringArray) -> Dictionary:
 	var brace_level = 0
 	var map = {}
-
-
+	
 	var i: int = 0
+	
 	while i < program.length():
 		var key: String
 		var block: String
@@ -49,43 +45,61 @@ static func parse_map(program: String, delimiter: PoolStringArray) -> Dictionary
 			elif !blank_chars.has(c):
 				key += c
 			
-		
-		for c in program.substr(i, program.length() - i):
+		for c in program.substr(i, program.length() - i):		
 			i += 1
 			if c == delimiter[0] :
 				brace_level += 1
 				
-
+			
 				if brace_level == 1:
 					continue
-
+			
 			if c == delimiter[1]:
 				brace_level -= 1
-
-
+			
 				if brace_level == 0:
 					break
-
+			
 			block += c
-
+		
 		map[key] = block
 	
 	return map
 
-
-
 static func arrayer(cmd: String, separator: String) -> PoolStringArray:
-	print ("[", separator, "]: ", cmd.split(separator))
-	return cmd.split(separator)
+	var res = PoolStringArray()
+	
+	var buffer = ""
+	
+	for c in cmd:
+		if blank_chars.has(c):
+			print(c, " -> ", "blank")			
+			pass
+			
+		elif c == separator:
+			print(c, " -> ", "sep")
+			if buffer:
+				res.append(buffer)
+			buffer = ""
+			continue
+		
+		else:
+			print(c, " -> ", "normal")
+			buffer += c
+	if buffer:
+		res.append(buffer)
+	print(res)
+	
+	return res 
 
 static func to_command(command: String) -> Command:
 	
 	var buffer: String = ""
-
+	
 	var aux: Array
-					
+	
 	print("command: ", command)
-
+	
 	for c in command:
 		if !blank_chars.has(c):
 			print("(", c, ")")
@@ -99,7 +113,7 @@ static func to_command(command: String) -> Command:
 		
 		#else:
 		#	buffer = ""
-			
+		
 	if buffer:
 		aux.append(buffer)
 	
