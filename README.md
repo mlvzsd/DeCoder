@@ -1,6 +1,6 @@
 # Decoder
 
-## Projeto de Conclusão de Curso na FMM
+## Objetivo
 
   Este projeto visa proporcionar noções básicas de programação para
 jovens entre 12 e 14 anos. Para isso, será criado exercicios lúdicos
